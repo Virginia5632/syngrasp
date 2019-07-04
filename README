@@ -1,0 +1,13 @@
+>> cd ~/catkin_ws/src/SynGrasp
+>> git init
+Initialized empty Git repository in /home/virginia/catkin_ws/src/SynGrasp/.git/
+
+>> config --global user.name "Virginia5632"
+>> git config --global user.email "vruizgarate@gmail.com"
+>> git remote add origin https://github.com/Virginia5632/SynGrasp.git
+>> git remote add origin https://github.com/Virginia5632/SynGrasp.git^C
+>> git add .
+>> git commit -m "SynGrasp first C++ files"
+
+>> git push origin master
+
