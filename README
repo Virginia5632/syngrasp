@@ -1,3 +1,4 @@
+// TO CREATE NEW REPOSITORY
 >> cd ~/catkin_ws/src/SynGrasp
 >> git init
 Initialized empty Git repository in /home/virginia/catkin_ws/src/SynGrasp/.git/
@@ -11,3 +12,12 @@ Initialized empty Git repository in /home/virginia/catkin_ws/src/SynGrasp/.git/
 
 >> git push origin master
 
+
+// TO ADD FILES
+>> cd ~/catkin_ws/src/SynGrasp
+>> git add -A
+>> git commit -m "Readme"
+
+>> git push -u origin master
+
+>> git pull <remote>
