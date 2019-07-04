@@ -20,4 +20,5 @@ Initialized empty Git repository in /home/virginia/catkin_ws/src/SynGrasp/.git/
 
 >> git push -u origin master
 
->> git pull <remote>
+>> git pull origin master
+
