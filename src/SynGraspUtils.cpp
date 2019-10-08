@@ -261,3 +261,15 @@ Eigen::Matrix3d SGeul2rotmZYX (Eigen::Vector3d eulZYX){
   
   return rotm;
 }
+
+Eigen::Vector3d SGrotmZYX2eul (Eigen::Matrix3d rotm){
+  Eigen::Vector3d eulZYX;
+  double sy;
+  sy=sqrt(rotm(0,0) * rotm(0,0) +  rotm(1,0) * rotm(1,0));
+  eulZYX(0) = atan2(rotm(1,0), rotm(0,0));
+  eulZYX(1) = atan2(-rotm(2,0), sy);
+  eulZYX(2) = atan2(rotm(2,1) , rotm(2,2)); 
+  
+  
+  return eulZYX;
+}

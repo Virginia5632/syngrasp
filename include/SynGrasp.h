@@ -66,6 +66,7 @@ MatrixXd SGgTildeMatrix(MatrixXd Cp, Vector3d cm);
 Cube SGcube(Matrix4d Htr,double lx, double ly, double lz, double w);
 int SGfaceDetector (MatrixXd CP, Cube Obj);
 Eigen::Matrix3d SGeul2rotmZYX (Eigen::Vector3d eulZYX);
+Eigen::Vector3d SGrotmZYX2eul (Eigen::Matrix3d rotm);
 
 // RESOURCES
 double distancePointPlane (Vector3d point, VectorXd plane);

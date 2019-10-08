@@ -4,7 +4,7 @@ VectorXd SG_Simple_Stab_ManualDx(VectorXd w, MatrixXd Kp, Cube obj, VectorXd fma
   int iter=0;
   int nc=obj.normals_cp.cols();
   
-  double deltaN=0.01;
+  double deltaN=0.02;
   double alpha=1.0/sqrt(1.0+pow(mu,2));
   double kint=-0.01;
   
