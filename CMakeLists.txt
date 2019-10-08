@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(SynGrasp)
+project(syngrasp)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -108,10 +108,10 @@ find_package(Eigen3 REQUIRED NO_MODULE)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES SynGrasp
+#  LIBRARIES syngrasp
    CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
-#   CATKIN_DEPENDS SynGrasp
+#   CATKIN_DEPENDS syngrasp
 )
 
 ###########
@@ -123,13 +123,13 @@ catkin_package(
 include_directories(
   include
   include ${catkin_INCLUDE_DIRS}
-  include(/home/virginia/catkin_ws/src/SynGrasp)
+  include(/home/virginia/catkin_ws/src/syngrasp)
   ${EIGEN3_INCLUDE_DIRS}   
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/SynGrasp.cpp
+#   src/${PROJECT_NAME}/syngrasp.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -173,7 +173,7 @@ include_directories(
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
-#install(TARGETS SynGrasp RUNTIME DESTINATION bin)
+#install(TARGETS syngrasp RUNTIME DESTINATION bin)
 
 ## Mark executables and/or libraries for installation
  install(TARGETS 
