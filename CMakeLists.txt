@@ -15,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
 )
+
+
 find_package(Eigen3 REQUIRED NO_MODULE)
 
 ## System dependencies are found with CMake's conventions

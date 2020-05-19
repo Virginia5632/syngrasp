@@ -58,6 +58,11 @@ struct Cube {
 MatrixXd SGrotx (double x);
 MatrixXd SGroty (double x);
 MatrixXd SGrotz (double x);
+enum Axis
+{
+    X = 0, Y = 1, Z = 2
+};
+MatrixXd SGrot (Axis axis,double x);
 MatrixXd SGskew(Vector3d t);
 Matrix4d SGtransl(double a, double b, double c);
 MatrixXd SGDHMatrix(VectorXd v);

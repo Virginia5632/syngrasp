@@ -8,7 +8,7 @@ int addition (int a, int b)
 }
 
 MatrixXd SGrotx(double x){
-  MatrixXd R(3,3);
+  MatrixXd R(3,3)::Identity(3,3);
   R<< 1,  0, 0,
       0,  cos(x),  -sin(x),
       0,  sin(x),  cos(x);    
@@ -16,7 +16,7 @@ MatrixXd SGrotx(double x){
 }
 
 MatrixXd SGroty(double x){
-  MatrixXd R(3,3); 
+  MatrixXd R(3,3)::Identity(3,3); 
   R<< cos(x),  0,  sin(x),
       0,       1,       0,
       -sin(x), 0,       cos(x);
@@ -24,11 +24,37 @@ MatrixXd SGroty(double x){
 }
 
 MatrixXd SGrotz(double x){
-  MatrixXd R(3,3);
+  MatrixXd R(3,3)::Identity(3,3);
   R<<cos(x),  -sin(x),  0,   
      sin(x),  cos(x),   0,
      0,       0,        1;
   return R;
+}
+
+MatrixXd SGrot(Axis axis, double x)
+{
+    MatrixXd R = MatrixXd::Identity(3,3);
+    switch (axis)
+    {
+    case X:
+        R << 1, 0,         0,
+             0, cos(x), -sin(x),
+             0, sin(x),  cos(x);
+        break;
+    case Y:
+        R  << cos(x), 0, sin(x),
+              0,        1, 0,
+             -sin(x), 0, cos(x);
+        break;
+    case Z:
+        R << cos(x), -sin(x), 0,
+             sin(x),  cos(x), 0,
+             0,         0,        1;
+        break;
+    default:
+        break;
+    }
+    return R;
 }
 
 
