@@ -1,4 +1,7 @@
 // Syngrasp Header file
+#ifndef SYN_GRASP_UTILS_H
+#define SYN_GRASP_UTILS_H
+
 #include <iostream>
 #include <math.h>  
 #include <Eigen/Dense>
@@ -172,3 +175,5 @@ class Pinv{
     #endif
    
 };
+
+#endif
