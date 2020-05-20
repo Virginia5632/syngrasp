@@ -31,29 +31,29 @@ MatrixXd SGrotz(double x){
   return R;
 }
 
-MatrixXd SGrot(Axis axis, double x)
-{
-    MatrixXd R = MatrixXd::Identity(3,3);
-    switch (axis)
-    {
-    case X:
-        R << 1, 0,         0,
-             0, cos(x), -sin(x),
-             0, sin(x),  cos(x);
-        break;
-    case Y:
-        R  << cos(x), 0, sin(x),
-              0,        1, 0,
-             -sin(x), 0, cos(x);
-        break;
-    case Z:
-        R << cos(x), -sin(x), 0,
-             sin(x),  cos(x), 0,
-             0,         0,        1;
-        break;  
-    }
-    return R;
-}
+// MatrixXd SGrot(Axis axis, double x)
+// {
+//     MatrixXd R = MatrixXd::Identity(3,3);
+//     switch (axis)
+//     {
+//     case X:
+//         R << 1, 0,         0,
+//              0, cos(x), -sin(x),
+//              0, sin(x),  cos(x);
+//         break;
+//     case Y:
+//         R  << cos(x), 0, sin(x),
+//               0,        1, 0,
+//              -sin(x), 0, cos(x);
+//         break;
+//     case Z:
+//         R << cos(x), -sin(x), 0,
+//              sin(x),  cos(x), 0,
+//              0,         0,        1;
+//         break;  
+//     }
+//     return R;
+// }
 
 
 MatrixXd SGskew(Vector3d t){
