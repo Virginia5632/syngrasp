@@ -61,6 +61,8 @@ struct Cube {
 MatrixXd SGrotx (double x);
 MatrixXd SGroty (double x);
 MatrixXd SGrotz (double x);
+void KpComp(Eigen::MatrixXd&, Eigen::MatrixXd&, const Eigen::MatrixXd&, const Hand arm, const Cube);
+  
 // enum Axis
 // {
 //     X = 0, Y = 1, Z = 2
