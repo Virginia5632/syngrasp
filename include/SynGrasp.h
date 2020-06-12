@@ -61,7 +61,6 @@ struct Cube {
 MatrixXd SGrotx (double x);
 MatrixXd SGroty (double x);
 MatrixXd SGrotz (double x);
-void KpComp(Eigen::MatrixXd&, Eigen::MatrixXd&, const Eigen::MatrixXd&, const Hand arm, const Cube);
   
 // enum Axis
 // {
@@ -90,6 +89,8 @@ Hand SGmoveHand_Gen(Hand hand,VectorXd q);
 
 // GRASP ANALYSIS;
 VectorXd SG_Simple_Stab_ManualDx(VectorXd w, MatrixXd Kp, Cube obj, VectorXd fmax, VectorXd &flims, MatrixXd &cp_estab, int maxiter, double mu);
+void KpComp(Eigen::MatrixXd&, Eigen::MatrixXd&, const Eigen::MatrixXd&, const Hand arm, const Cube);
+void ObjForce(Eigen::VectorXd&, const Eigen::MatrixXd&, const Hand, const Cube);
 
 // GRASP DEFINITION
 void SG_CubeContact_Simp (Hand &Hand,  Cube &Cube);
