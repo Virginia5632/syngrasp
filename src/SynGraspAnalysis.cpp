@@ -55,9 +55,8 @@ void KpComp(Eigen::MatrixXd& Kpout, Eigen::MatrixXd& KobjDes, const Eigen::Matri
   Eigen::VectorXd Kmax(6);
   Eigen::VectorXd Kmin(6);
   Kmax << 500.0,500.0,500.0,50.0,50.0,50.0;  
-  Kmin<<30.0,30.0,30.0,5.0,5.0,5.0;
+  Kmin <<30.0,30.0,30.0,5.0,5.0,5.0;
   
-  Eigen::MatrixXd Kp;
   Eigen::MatrixXd KpComp(Eigen::MatrixXd);
   
   Eigen::Matrix3d KT=Eigen::Matrix3d::Identity();
@@ -89,41 +88,39 @@ void KpComp(Eigen::MatrixXd& Kpout, Eigen::MatrixXd& KobjDes, const Eigen::Matri
   
  
   // Max and Min stiffness of each robot in the world frame
-  Kpout=Eigen::MatrixXd::Identity(arm.n*6,arm.n*6);
+//   Kpout=Eigen::MatrixXd::Identity(6,6);
+  int n=arm.n;
+//   Kpout=Eigen::MatrixXd::Identity(arm.n*6,arm.n*6);
+  Kpout=Eigen::MatrixXd::Identity(n*6,n*6);
   KobjDes=Eigen::MatrixXd::Identity(6,6);
   
 
   // Max and Min stiffness of each robot in the world frame
-  for (int i=0; i<3; i++){
+  for (int i=0; i<6; i++){
     KmaxM(i,i)=Kmax(i);
   }
-
-  for (int i=0; i<3; i++){
+  for (int i=0; i<6; i++){
     KminM(i,i)=Kmin(i);
   }
   
   
   if (arm.n==1){     
   // From Obj Percentage to actual Values 
-  for (int i=0; i<3; i++){
-    for (int j=0; j<3; j++){
-      KobjDes(i,j)=KminM(i,j)+0.01*KobjDesPer(i,j)*(KmaxM(i,j)-KminM(i,j));
-    }
-  }   
-  
+        
+        KobjDes=KminM+0.01*KobjDesPer*(KmaxM-KminM);
+   std::cout << "HERE I AM : " << KobjDes << std::endl << KminM << std::endl << KmaxM << std::endl << KminM << std::endl << KobjDesPer << std::endl;
   // Build output
-  Kpout.block<3,3>(0,0)=KobjDes.block<3,3>(0,0);
-  Kpout.block<3,3>(3,3)=KobjDes.block<3,3>(3,3);   
+        Kpout=KobjDes; 
   }
     
-  if (arm.n==2){    
+  else if (arm.n==2){ 
     Rot_K.block<3,3>(0,0)=arm.F[0].base.block<3,3>(0,0);
-    Rot_K.block<3,3>(3,3)=arm.F[0].base.block<3,3>(0,0);;        
+    Rot_K.block<3,3>(3,3)=arm.F[0].base.block<3,3>(0,0);        
     wKmax1=Rot_K.transpose().inverse()*KmaxM*Rot_K.inverse();
     wKmin1=Rot_K.transpose().inverse()*KminM*Rot_K.inverse();
           
-    Rot_K.block<3,3>(0,0)=arm.F[1].base.block<3,3>(0,0);;
-    Rot_K.block<3,3>(3,3)=arm.F[1].base.block<3,3>(0,0);;        
+    Rot_K.block<3,3>(0,0)=arm.F[1].base.block<3,3>(0,0);
+    Rot_K.block<3,3>(3,3)=arm.F[1].base.block<3,3>(0,0);        
     wKmax2=Rot_K.transpose().inverse()*KmaxM*Rot_K.inverse();
     wKmin2=Rot_K.transpose().inverse()*KminM*Rot_K.inverse();
     
@@ -210,11 +207,12 @@ void KpComp(Eigen::MatrixXd& Kpout, Eigen::MatrixXd& KobjDes, const Eigen::Matri
     
     std::cout<<"wKobjDesPer: \n"<<wKobjDesPer<<std::endl;
     std::cout<<"wKobjDes: \n"<<wKobjDes<<std::endl;
-  }
+   }
   
   std::cout<<"KobjDesPer: \n"<<KobjDesPer<<std::endl; 
-  std::cout<<"KobjDes: \n"<< KobjDesPer<<std::endl;
+  std::cout<<"KobjDes: \n"<< KobjDes<<std::endl;
 } 
+
 
 
 void ObjForce(Eigen::VectorXd& FMobj, const Eigen::MatrixXd& ee_FM_robots, const Hand arm, const Cube Obj){
