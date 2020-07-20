@@ -54,8 +54,8 @@ void KpComp(Eigen::MatrixXd& Kpout, Eigen::MatrixXd& KobjDes, const Eigen::Matri
   
   Eigen::VectorXd Kmax(6);
   Eigen::VectorXd Kmin(6);
-  Kmax << 500.0,500.0,500.0,50.0,50.0,50.0;  
-  Kmin <<30.0,30.0,30.0,5.0,5.0,5.0;
+  Kmax << 1000.0,1000.0,1000.0,75.0,75.0,75.0;
+  Kmin <<50.0,50.0,50.0,1.0,1.0,1.0;
   
   Eigen::MatrixXd KpComp(Eigen::MatrixXd);
   
